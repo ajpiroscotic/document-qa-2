@@ -7,13 +7,13 @@ import io
 real_api_key = st.secrets["real_api_key"]
 
 def validate_api_key():
-    if openai_api_key:
-        if openai_api_key != real_api_key:
+    if real_api_key:
+        if real_api_key != real_api_key:
             st.error("The provided API key does not match the standard key. Please use the correct API key.")
             st.session_state["api_key_valid"] = False
         else:
             try:
-                client = OpenAI(api_key=openai_api_key)
+                client = OpenAI(api_key=real_api_key)
                 client.models.list()
                 st.success("API key is valid!")
                 st.session_state["api_key_valid"] = True
@@ -44,13 +44,13 @@ st.write(
 )
 
 
-if not openai_api_key:
+if not real_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝")
 else:
     validate_api_key()
     if st.session_state.get("api_key_valid", False):
         # Create an OpenAI client
-        client = OpenAI(api_key=openai_api_key)
+        client = OpenAI(api_key=real_api_key)
 
         # Let the user upload a file
         uploaded_file = st.file_uploader(
