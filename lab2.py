@@ -4,7 +4,7 @@ import PyPDF2
 import io
 
 # function to validate the API Keys
-real_api_key = st.secrets["api_key"]
+real_api_key = st.secrets["real_api_key"]
 
 def validate_api_key():
     if openai_api_key:
