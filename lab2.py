@@ -43,8 +43,6 @@ st.write(
     "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
 )
 
-# Ask user for their OpenAI API key
-openai_api_key = st.text_input("OpenAI API Key", type="password")
 
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝")
